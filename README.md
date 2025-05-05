@@ -7,55 +7,117 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role dan Fitur Cookify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+        }
+        table, th, td {
+            border: 1px solid #888;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    <h1>Role dan Fitur-fiturnya</h1>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    <p><strong>Cookify</strong> adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, dan berbagi resep masakan dengan mudah. Platform ini mendukung pengguna dari berbagai latar belakang untuk menjelajahi ide masakan, mengikuti tren, hingga mengembangkan kreativitas memasak.</p>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    <h2>1. Admin (Pengelola Aplikasi)</h2>
+    <ul>
+        <li>Semua fitur Pembuat Resep</li>
+        <li>Verifikasi & moderasi resep</li>
+        <li>Moderasi komentar & user</li>
+        <li>Manajemen kategori dan bahan</li>
+    </ul>
 
-## Learning Laravel
+    <h2>2. Kontributor (Pembuat Resep)</h2>
+    <ul>
+        <li>Semua fitur User Umum</li>
+        <li>Upload resep baru (pending approval atau auto-approve)</li>
+        <li>Tambah foto/video tutorial</li>
+        <li>Lihat statistik interaksi pada resep</li>
+    </ul>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    <h2>3. User Biasa (Pencari Resep)</h2>
+    <ul>
+        <li>Registrasi & login</li>
+        <li>Jelajah & filter resep</li>
+        <li>Simpan resep favorit</li>
+        <li>Buat daftar belanja otomatis</li>
+        <li>Komentar & rating resep</li>
+    </ul>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+    <h1>Tabel-tabel Database Beserta Field dan Tipe Datanya</h1>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    <h2>1. Tabel Pengguna</h2>
+    <table>
+        <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+        <tr><td>name</td><td>String</td><td>Nama pengguna</td></tr>
+        <tr><td>email</td><td>String</td><td>Email pengguna</td></tr>
+        <tr><td>password</td><td>String</td><td>Password pengguna</td></tr>
+    </table>
 
-## Laravel Sponsors
+    <h2>2. Tabel Kategori</h2>
+    <table>
+        <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+        <tr><td>name</td><td>String</td><td>Nama kategori</td></tr>
+    </table>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+    <h2>3. Tabel Resep</h2>
+    <table>
+        <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+        <tr><td>Pengguna id</td><td>String</td><td>Foreign key dari tabel pengguna</td></tr>
+        <tr><td>Kategori id</td><td>String</td><td>Foreign key dari tabel kategori</td></tr>
+        <tr><td>Judul</td><td>String</td><td>Nama resep</td></tr>
+        <tr><td>Cooking_time</td><td>Integer</td><td>Keterangan waktu memasak</td></tr>
+        <tr><td>description</td><td>Text</td><td>Deskripsi resep masakan</td></tr>
+        <tr><td>steps</td><td>Text</td><td>Langkah-langkah memasak</td></tr>
+        <tr><td>photo</td><td>String</td><td>Untuk memperjelas konten</td></tr>
+    </table>
 
-### Premium Partners
+    <h2>4. Tabel Bahan-bahan</h2>
+    <table>
+        <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+        <tr><td>name</td><td>String</td><td>Nama bahan-bahan</td></tr>
+    </table>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+    <h2>5. Tabel Resep Bahan-bahan</h2>
+    <table>
+        <tr><th>Nama Field</th><th>Tipe Data</th><th>Keterangan</th></tr>
+        <tr><td>Resep id</td><td>String</td><td>Foreign key dari tabel resep</td></tr>
+        <tr><td>Bahan-bahan id</td><td>String</td><td>Foreign key dari tabel bahan-bahan</td></tr>
+    </table>
 
-## Contributing
+    <h1>Jenis Relasi dan Tabel yang Berelasi</h1>
+    <ol>
+        <li>Pengguna ke Resep (Many to Many)</li>
+        <li>Resep ke Kategori (Many to Many)</li>
+        <li>Resep ke Bahan-bahan (Many to Many)</li>
+        <li>Bahan-bahan ke Resep Bahan-bahan (Many to Many)</li>
+    </ol>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</body>
+</html>

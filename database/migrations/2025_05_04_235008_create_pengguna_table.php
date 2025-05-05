@@ -26,14 +26,13 @@ return new class extends Migration
 
         Schema::create('resep', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained()->onDelete('cascade');
-            $table->foreignId('kategori_id')->constrained()->onDelete('set null')->nullable();
+            $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+            $table->foreignId('kategori_id')->constrained('kategori')->onDelete('set null')->nullable();
             $table->string('judul');
             $table->integer('cooking_time');
             $table->text('description')->nullable();
             $table->text('steps');
             $table->string('photo')->nullable();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
 
@@ -45,11 +44,10 @@ return new class extends Migration
 
         Schema::create('resep_bahan_bahan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('resep_id')->constrained()->onDelete('cascade');
-            $table->foreignId('bahan-bahan_id')->constrained()->onDelete('cascade');
+            $table->foreignId('resep_id')->constrained('resep')->onDelete('cascade');
+            $table->foreignId('bahan_bahan_id')->constrained('bahan_bahan')->onDelete('cascade');
             $table->timestamps();
         });
-
 
     }
 
