@@ -1,61 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">COOKIFY</h1>
+<h3 align="center">(Sistem Manajemen Resep Masakan Berbasis Web)</h3><br>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logo2.jpg" alt="Logo Cookify" width="150" height="auto"><br><br>
 </p>
 
-## About Laravel
+<p align="center">
+  <strong>Nama :</strong> Juwita <br>
+  <strong>NIM :</strong> D0223339
+</p>
+<br><br>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Framework Web laravel <br>
+  2025
+</p>
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tentang Cookify
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, dan berbagi resep masakan dengan mudah. Platform ini mendukung pengguna dari berbagai latar belakang untuk menjelajahi ide masakan, mengikuti tren, hingga mengembangkan kreativitas memasak.
 
-## Learning Laravel
+### Role dan fitur-fiturnya
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### 1. Admin (Pengelola aplikasi)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Semua fitur Pembuat Resep
+- Verifikasi & moderasi resep
+- Moderasi komentar & user
+- Manajemen kategori dan bahan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### 2. Kontributor (Pembuat Resep)
 
-## Laravel Sponsors
+- Semua fitur User Umum
+- Upload resep baru (pending approval atau auto-approve)
+- Tambah foto/video tutorial
+- Lihat statistik interaksi pada resep
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+#### 3. User biasa (Pencari Resep)
 
-### Premium Partners
+- Registrasi & login
+- Jelajah & filter resep
+- Simpan resep favorit
+- Buat daftar belanja otomatis
+- Komentar & rating resep
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+<br>
 
-## Contributing
+### Tabel-tabel database beserta field dan tipe datanya
+<br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Tabel 1 (Pengguna)
 
-## Code of Conduct
+| Field | Tipe Data | Keterangan |
+|-------|-----------|------------|
+| name | string | Nama pengguna |
+| email | string | Email pengguna |
+| password | string | Password pengguna |
+<br>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### Tabel 2 (Kategori)
 
-## Security Vulnerabilities
+| Nama Field | Tipe Data | Keterangan |
+|-------|-----------|------------|
+| name | string | Nama kategori |
+<br>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Tabel 3 (Resep)
 
-## License
+| Field | Tipe Data | Keterangan |
+|-------|-----------|------------|
+| pengguna_id | string | FK dari tabel pengguna |
+| kategori_id | string | FK dari tabel kategori |
+| judul | string | Nama resep |
+| cooking_time | integer | Waktu memasak |
+| description | text | Deskripsi resep |
+| steps | text | Langkah-langkah memasak |
+| photo | string | Foto resep |
+<br>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Tabel 4 (Bahan-bahan)
+
+| Field | Tipe Data | Keterangan |
+|-------|-----------|------------|
+| name | string | Nama bahan |
+<br>
+
+#### Tabel 5 (Resep Bahan-bahan)
+
+| Field | Tipe Data | Keterangan |
+|-------|-----------|------------|
+| resep_id | string | FK dari tabel resep |
+| bahan_id | string | FK dari tabel bahan |
+<br>
+
+### Jenis-jenis Relasi
+
+- Pengguna ke Resep (One-to-Many)  
+- Resep ke Kategori (Many-to-Many)  
+- Resep ke Bahan-bahan (Many-to-Many)

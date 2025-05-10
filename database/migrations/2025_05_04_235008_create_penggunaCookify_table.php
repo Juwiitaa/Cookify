@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->enum('role', ['admin', 'kontributor', 'user'])->default('user');
             $table->timestamps();
         });
 
@@ -27,7 +28,7 @@ return new class extends Migration
         Schema::create('resep', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
-            $table->foreignId('kategori_id')->constrained('kategori')->onDelete('set null')->nullable();
+            $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
             $table->string('judul');
             $table->integer('cooking_time');
             $table->text('description')->nullable();
@@ -49,6 +50,23 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // Schema::create('komentar', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('resep_id')->constrained('resep')->onDelete('cascade');
+        //     $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+        //     $table->text('isi_komentar');
+        //     $table->tinyInteger('rating')->nullable(); // 1-5 bintang
+        //     $table->timestamps();
+        // });
+
+        // Schema::create('favorit_resep', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+        //     $table->foreignId('resep_id')->constrained('resep')->onDelete('cascade');
+        //     $table->timestamps();
+        // });
+
+
     }
 
     /**
@@ -56,10 +74,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengguna');
-        Schema::dropIfExists('kategori');
-        Schema::dropIfExists('resep');
-        Schema::dropIfExists('bahan_bahan');
+        // Schema::dropIfExists('favorit_resep');
+        // Schema::dropIfExists('komentar');
         Schema::dropIfExists('resep_bahan_bahan');
+        Schema::dropIfExists('bahan_bahan');
+        Schema::dropIfExists('resep');
+        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('pengguna');
     }
 };
