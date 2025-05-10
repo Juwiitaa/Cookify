@@ -26,7 +26,7 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 #### 1. Admin (Pengelola aplikasi)
 
 - Semua fitur Pembuat Resep
-- Verifikasi & moderasi resep
+- Moderasi komentar dan pengguna
 - Moderasi komentar & user
 - Manajemen kategori dan bahan
 
