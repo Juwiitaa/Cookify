@@ -52,7 +52,7 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 
 #### Tabel 1 (Pengguna)
 
-| Field | Tipe Data | Keterangan |
+| Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | name | string | Nama pengguna |
 | email | string | Email pengguna |
@@ -68,7 +68,7 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 
 #### Tabel 3 (Resep)
 
-| Field | Tipe Data | Keterangan |
+| Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | pengguna_id | string | FK dari tabel pengguna |
 | kategori_id | string | FK dari tabel kategori |
@@ -81,14 +81,14 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 
 #### Tabel 4 (Bahan-bahan)
 
-| Field | Tipe Data | Keterangan |
+| Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | name | string | Nama bahan |
 <br>
 
 #### Tabel 5 (Resep Bahan-bahan)
 
-| Field | Tipe Data | Keterangan |
+| Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | resep_id | string | FK dari tabel resep |
 | bahan_id | string | FK dari tabel bahan |
