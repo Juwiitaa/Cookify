@@ -11,3 +11,6 @@ Route::get('/', function () {
 Route::get('/landing', [landingController::class, 'index']);
 
 Route::get('/home', [dashboardController::class, 'home'])->name('home');
+Route::get('/jelajahiResep', [dashboardController::class, 'resep'])->name('resep');
+Route::get('/reels', [dashboardController::class, 'reels'])->name('reels');
+Route::get('/koleksi', [dashboardController::class, 'koleksi'])->name('koleksi');

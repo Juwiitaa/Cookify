@@ -9,4 +9,13 @@ class dashboardController extends Controller
     public function home(){
         return view('home');
     }
+    public function resep(){
+        return view('jelajahiResep');
+    }
+    public function reels(){
+        return view('reels');
+    }
+    public function koleksi(){
+        return view('koleksi');
+    }
 }
