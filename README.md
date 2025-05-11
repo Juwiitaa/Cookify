@@ -42,8 +42,6 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 - Registrasi & login
 - Jelajah & filter resep
 - Simpan resep favorit
-- Buat daftar belanja otomatis
-- Komentar & rating resep
 
 <br>
 
@@ -54,44 +52,55 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
-| name | string | Nama pengguna |
-| email | string | Email pengguna |
-| password | string | Password pengguna |
+| id | BIGINT | Primary key |
+| name | String | Nama pengguna |
+| email | String | Email pengguna |
+| password | String | Password pengguna |
+| role | enum | admin, kreator dan pengguna(user biasa) |
+| timestamps | datetime | created_at dan updated_at |
 <br>
 
 #### Tabel 2 (Kategori)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
-| name | string | Nama kategori |
+| id | BIGINT | Primary key |
+| name | String | Nama kategori |
+| timestamps | datetime | created_at dan updated_at |
 <br>
 
 #### Tabel 3 (Resep)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
-| pengguna_id | string | FK dari tabel pengguna |
-| kategori_id | string | FK dari tabel kategori |
-| judul | string | Nama resep |
+| id | BIGINT | Primary key |
+| pengguna_id | String | FK dari tabel pengguna |
+| kategori_id | String | FK dari tabel kategori |
+| judul | String | Nama resep |
 | cooking_time | integer | Waktu memasak |
 | description | text | Deskripsi resep |
 | steps | text | Langkah-langkah memasak |
-| photo | string | Foto resep |
+| photo | String | Foto resep |
+| timestamps | datetime | created_at dan updated_at |
 <br>
 
 #### Tabel 4 (Bahan-bahan)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
-| name | string | Nama bahan |
+| id | BIGINT | Primary key |
+| name | String | Nama bahan |
+| timestamps | datetime | created_at dan updated_at |
 <br>
 
 #### Tabel 5 (Resep Bahan-bahan)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
-| resep_id | string | FK dari tabel resep |
-| bahan_id | string | FK dari tabel bahan |
+| id | BIGINT | Primary key |
+| resep_id | String | FK dari tabel resep |
+| bahan_id | String | FK dari tabel bahan |
+| timestamps | datetime | created_at dan updated_at |
 <br>
 
 ### Jenis-jenis Relasi
