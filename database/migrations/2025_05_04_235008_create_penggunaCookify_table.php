@@ -10,14 +10,14 @@ return new class extends Migration
     public function up(): void
     {
         
-        Schema::create('pengguna', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['admin', 'kontributor', 'user'])->default('user');
-            $table->timestamps();
-        });
+        // Schema::create('pengguna', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->string('email')->unique();
+        //     $table->string('password');
+        //     $table->enum('role', ['admin', 'kontributor', 'user'])->default('user');
+        //     $table->timestamps();
+        // });
 
         Schema::create('kategori', function (Blueprint $table) {
             $table->id();
@@ -27,7 +27,7 @@ return new class extends Migration
 
         Schema::create('resep', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('kategori_id')->constrained('kategori')->onDelete('cascade');
             $table->string('judul');
             $table->integer('cooking_time');
@@ -53,7 +53,7 @@ return new class extends Migration
         // Schema::create('komentar', function (Blueprint $table) {
         //     $table->id();
         //     $table->foreignId('resep_id')->constrained('resep')->onDelete('cascade');
-        //     $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+        //     $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         //     $table->text('isi_komentar');
         //     $table->tinyInteger('rating')->nullable(); // 1-5 bintang
         //     $table->timestamps();
@@ -61,7 +61,7 @@ return new class extends Migration
 
         // Schema::create('favorit_resep', function (Blueprint $table) {
         //     $table->id();
-        //     $table->foreignId('pengguna_id')->constrained('pengguna')->onDelete('cascade');
+        //     $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         //     $table->foreignId('resep_id')->constrained('resep')->onDelete('cascade');
         //     $table->timestamps();
         // });
@@ -80,6 +80,6 @@ return new class extends Migration
         Schema::dropIfExists('bahan_bahan');
         Schema::dropIfExists('resep');
         Schema::dropIfExists('kategori');
-        Schema::dropIfExists('pengguna');
+        // Schema::dropIfExists('pengguna');
     }
 };
