@@ -18,4 +18,7 @@ class dashboardController extends Controller
     public function koleksi(){
         return view('koleksi');
     }
+    public function dashboard(){
+        return view('dashboard');
+    }
 }

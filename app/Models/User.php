@@ -21,7 +21,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    public function isAdmin(){
+        return $this->role === 'admin';
+    }
+
+    public function isKontributor(){
+        return $this->role === 'kontributor';
+    }
+
+    public function isUser(){
+        return $this->role === 'user';
+    }
 
     /**
      * The attributes that should be hidden for serialization.
