@@ -14,7 +14,7 @@ class dashboardController extends Controller
     }
     public function reels(){
         return view('reels');
-    }
+    } 
     public function koleksi(){
         return view('koleksi');
     }

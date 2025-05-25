@@ -1,28 +1,20 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\dashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/home', function () {
-    return view('home');
-})->middleware(['auth', 'verified'])->name('home');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
-
-Route::get('/home', [dashboardController::class, 'home'])->name('home');
-Route::get('/dashboard', [dashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/home', [dashboardController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/register', [UserController::class, 'lihatRegister'])->name('register');
+Route::get('/login', [UserController::class, 'lihatLogin'])->name('login');
+Route::post('/register', [userController::class, 'register'])->name('register.simpan');
+Route::post('/login/simpan', [userController::class, 'login'])->name('login.simpan');
+Route::post('/logout', [userController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/koleksi', [dashboardController::class, 'koleksi'])->middleware('auth')->name('koleksi');
+Route::get('/reels', [dashboardController::class, 'reels'])->middleware('auth')->name('reels');
+Route::get('/jelajahiresep', [dashboardController::class, 'resep'])->middleware('auth')->name('resep');

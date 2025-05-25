@@ -26,10 +26,16 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        
-        @include('layouts.navbarPengguna')
-        @include('layouts.navbarKreator')
-        @include('layouts.navbarAdmin')
+
+        @auth
+            @if (Auth::User()->role === 'admin')
+                @include('layout.navbarAdmin');
+            @elseif (Auth::User()->role === 'kontributor');
+                @include('layout.navbarKreator');
+            @else
+                @include('layout.navbarPengguna');
+            @endif
+        @endauth
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -239,7 +245,7 @@
                                 </a>
                             </div>
                         </li> --}}
-                        @include('layouts.profile')
+                        @include('layout.profile')
 
                     </ul>
 
@@ -261,7 +267,7 @@
                 
             </div>
 
-            @include('layouts.footer')
+            @include('layout.footer')
 
         </div>
 
