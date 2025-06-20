@@ -12,26 +12,17 @@
     <div class="card shadow p-4" style="width: 100%; max-width: 450px;">
         <h3 class="text-center mb-4">Login</h3>
 
-        <form method="POST" action="{{ route('login.simpan') }}">
+        <form action="{{ route('login.simpan') }}" method="POST">
             @csrf
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email"
-                       class="form-control @error('email') is-invalid @enderror"
-                       id="email"
-                       name="email"
-                       value="{{ old('email') }}"
-                       required autofocus>
+                <input type="email" name="email" class="form-control" required>
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password"
-                       class="form-control @error('password') is-invalid @enderror"
-                       id="password"
-                       name="password"
-                       required>
+                <input type="password" name="password" class="form-control" required>
             </div>
 
             <div class="mb-3 form-check">
@@ -40,14 +31,17 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
-                    {{-- <a href="{{ route('password.request') }}" class="text-decoration-none">Forgot your password?</a> --}}
-                    {{-- <a href="" class="text-decoration-none">Forgot your password?</a> --}}
-            
-
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-danger">Login</button>
             </div>
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <p class="text-decoration-none">Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
+                
+            </div>
+            
         </form>
+        
     </div>
+    <div></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

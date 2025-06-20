@@ -6,26 +6,26 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resep extends Model
 {
-    protected $table = 'resep';
     protected $fillable = [
-        'pengguna_id',
+        'user_id',
         'kategori_id',
         'judul',
-        'cooking_time',
+        'bahan',
         'description',
         'steps',
         'photo'
     ];
 
-    public function penggunas(){
-        return $this->belongsTo(Resep::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
-    public function kategoris(){
-        return $this->belongsToMany(Kategori::class);
+    public function userFavorits(){
+        return $this->belongsToMany(User::class,)->withTimestamps();
     }
 
-    public function bahans(){
-        return $this->belongsToMany(BahanBahan::class);
+    public function kategori(){
+        return $this->belongsTo(Kategori::class);
     }
+
 }

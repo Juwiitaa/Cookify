@@ -24,6 +24,15 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function reseps(){
+        return $this->hasMany(Resep::class);
+    }
+
+    public function resepFavorits(){
+        return $this->belongsToMany(Resep::class, 'user_resep')->withTimestamps();
+    }
+
+
     // public function isAdmin(){
     //     return $this->role === 'admin';
     // }
@@ -36,11 +45,7 @@ class User extends Authenticatable
     //     return $this->role === 'user';
     // }
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+    
     protected $hidden = [
         'password',
         'remember_token',

@@ -14,72 +14,50 @@
 
         <form method="POST" action="{{ route('register.simpan') }}">
             @csrf
+
             <div class="mb-3">
                 <label for="name" class="form-label">Nama</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                id="name" name="name" value="{{ old('name') }}" required autofocus>
+                <input type="name" class="form-control" id="name" name="name" required>
                 @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                       id="email" name="email" value="{{ old('email') }}" required>
+                <input type="email" class="form-control" id="email" name="email" required>
                 @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror"
-                       id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" required>
                 @error('password')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                       id="password_confirmation" name="password_confirmation" required>
+                <label for="password_confirmation" class="form-label">konfirmasi password</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                 @error('password_confirmation')
-                    <div class="invalid-feedback">{{ $message }}</div>
+                    <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <p class="mb-1">Pilih peran Anda:</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="pengguna" id="user" value="user"
-                        {{ old('pengguna') == 'user' || old('pengguna') === null ? 'checked' : '' }}>
-                    <label class="form-check-label" for="user">Pengguna Biasa</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="pengguna" id="kontributor" value="kontributor"
-                        {{ old('pengguna') == 'kontributor' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="kontributor">Kreator (Bisa Membuat Resep)</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="pengguna" id="admin" value="admin"
-                        {{ old('pengguna') == 'admin' ? 'checked' : '' }}>
-                    <label class="form-check-label" for="admin">Admin (Hanya untuk yang mendapat izin)</label>
-                </div>
-                <small class="text-danger d-block mt-1">* Pilih Admin hanya jika Anda mendapat izin dari sistem.</small>
-
-                @error('pengguna')
-                    <div class="text-danger small mt-1">{{ $message }}</div>
-                @enderror
-
+                <label for="role" class="form-label">Pilih peran Anda:</label>
+                <select name="role" class="form-control">
+                    <option value="user">User</option>
+                    <option value="kontributor">Kontributor</option>
+                </select>
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <a href="{{ route('login') }}" class="text-decoration-none">Sudah punya akun?</a>
-                <button type="submit" class="btn btn-success">Register</button>
+                <button type="submit" class="btn btn-danger">Register</button>
             </div>
         </form>
     </div>

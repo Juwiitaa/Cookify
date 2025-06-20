@@ -1,3 +1,4 @@
+{{-- <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #bc3333; color: white; height: 100vh; overflow-y:auto;"> --}}
 <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #bc3333; color: white;">
 
     <!-- Sidebar - Brand -->
@@ -11,54 +12,43 @@
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
-    <!-- Nav Item - Home -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ '/home' }}">
+        <a class="nav-link" href="{{ route('home') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Home</span>
         </a>
     </li>
 
-    <!-- Nav Item - Jelajahi Resep -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ '/jelajahiResep' }}">
+        <a class="nav-link" href="{{ route('resep') }}">
             <i class="fas fa-fw fa-table"></i>
             <span>Jelajahi Resep</span>
         </a>
     </li>
-
-    <!-- Nav Item - Koleksi -->
+    
     <li class="nav-item">
-        <a class="nav-link" href="{{ '/koleksi' }}">
+        <a class="nav-link" href="{{ route('koleksi') }}">
             <i class="fas fa-fw fa-bookmark"></i>
             <span>Koleksi</span>
         </a>
     </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Fitur khusus Kontributor -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ '/resep/create' }}">
-            <i class="fas fa-fw fa-plus-circle"></i>
-            <span>Upload Resep</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ '/resep/statistik' }}">
-            <i class="fas fa-fw fa-chart-bar"></i>
-            <span>Statistik Resep</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="{{ '/tutorial' }}">
-            <i class="fas fa-fw fa-video"></i>
-            <span>Video Tutorial</span>
-        </a>
-    </li>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKelolaResep"
+                    aria-expanded="true" aria-controls="collapseKelolaResep">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Kelola Resep</span>
+                </a>
+                <div id="collapseKelolaResep" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Pilihan</h6>
+                        <a class="collapse-item" href="{{ route('lihatResep') }}">Lihat resep</a>
+                        <a class="collapse-item" href="{{ route('tambahResep') }}">Tambah resep</a>
+                    </div>
+                </div>
+            </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

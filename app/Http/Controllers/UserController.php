@@ -20,56 +20,48 @@ class UserController extends Controller
     }
 
     public function register(Request $request){
-        $request->validate([
-            'name' => 'required',
-            'email' => ['required', 'email'],
-            'password' => ['required', 'min:6', 'confirmed'],
-            'pengguna' => ['required', 'in:user,kontributor,admin']
 
+        $validated = $request->validate([
+            'name' => 'required|min:3|max:50',
+            'email' => 'required|email',
+            'password' => 'required|min:6|confirmed',
+            'role' => 'required'
         ]);
-
-        if ($request->pengguna === 'admin') {
-            $emailDiizinkan = ['admin@mail.com', 'juwita@example.com'];
-            if(!in_array($request->email, $emailDiizinkan)){
-                return back()->withErrors([
-                    'pengguna' => 'anda tidak diizinkan menjadi admin'
-                ])->withInput();
-            }
-        }
 
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->pengguna
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
+            'role' => $request['role']
         ]);
-
-        return redirect()->route('login');
-    }
-
-
-    public function login(Request $request){
-        $dataLogin = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => 'required'
-        ]);
-
-        if(Auth::attempt($dataLogin)){
-            $request->session()->regenerate();
-            return redirect('/home');
-
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    }
-
-    public function logout(Request $request){
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
 
         return redirect('/login');
+
+    }
+
+    public function login(Request $request){
+        $dataLogin = $request->only('email', 'password');
+
+        if(Auth::attempt($dataLogin)){
+            return redirect('/home');
+        }
+
+        return back()->withErrors('email');
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/login');
+    }
+
+    public function lihatPengguna(){
+        $pengguna = User::all();
+        return view('pengguna.lihatPengguna', compact('pengguna'));
+    }
+
+    public function HapusPengguna($id){
+        $pengguna = User::find($id);
+        $pengguna->delete();
+        return redirect()->route('lihatPengguna');
     }
 }

@@ -1,190 +1,77 @@
 @extends('master')
 
-@section('title', 'Resep')
+@section('title', 'Jelajahi Resep')
 
 @section('page')
 
     <div class="container-fluid">
 
+        <div class="container my-4">
 
-        {{-- <h1 class="h3 mb-2 text-gray-800">Input Data</h1> --}}
+            {{-- <form class="d-none d-sm-inline-block mr-auto my-2 mb-5 my-md-0 mw-100 navbar-search" style="padding-bottom: 20px;">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                        aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-light" type="button">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form> --}}
 
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Table Data</h6>
+            <div class="d-flex mb-2 gap-2 flex-wrap">
+                @foreach ($kategori as $kategori)
+                    <a href="{{ route('resep', ['kategori' => $kategori->id]) }}" class="btn mr-2 {{ request('kategori') == $kategori->id ? 'btn-dark' : '' }}" style="background-color: #bc3333; color:white;">
+                        {{ $kategori->nama_kategori }}
+                    </a>
+                @endforeach
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Mentor</th>
-                            <th>Commit Harian(%)</th>
-                            <th>Evaluasi Mentor(%)</th>
-                            <th>Evaluasi Bulanan(%)</th>
-                            <th>Keaktifan Tambahan(%)</th>
-                            <th>MOTM</th>
-                            <th>Nilai</th>
-                        </tr>
-                        </thead>
-                        <tfoot>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Mentor</th>
-                            <th>Commit Harian(%)</th>
-                            <th>Evaluasi Mentor(%)</th>
-                            <th>Evaluasi Bulanan(%)</th>
-                            <th>Keaktifan Tambahan(%)</th>
-                            <th>MOTM</th>
-                            <th>Nilai</th>
-                        </tr>
-                        </tfoot>
-                        <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td>39</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>23</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td>30</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+            <h4 class="fw-bold mb-3">Rekomendasi Resep</h4>
+            @foreach ($resep as $rsp)
+            <div class="card mb-3 shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{ asset('storage/'.$rsp->photo) }}" class="img-fluid rounded-start h-100" alt="Resep" style="object-fit: cover;">
+                    </div>
+                    <div class="col-md-9 d-flex align-items-center">
+                        <div class="card-body d-flex justify-content-between align-items-center w-100">
+                            <div>
+                                <h5 class="card-title mb-1">{{ $rsp->judul }}</h5>
+                                <span class="badge mb-1" style="background-color: #bc3333; color: white;">{{ $rsp->kategori->nama_kategori }}</span>
+                                <p class="card-text fw-semibold mb-1" style="max-width: 60vw;">
+                                    {{ $rsp->description }}
+                                </p>
+                                <small class="text-muted">Oleh: {{ $rsp->user->name }}</small>
+                                <div class="mt-2 d-flex gap-3">
+                                    <i class="bi bi-heart"></i>
+                                    <i class="bi bi-person"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="{{ route('detailResep', $rsp->id) }}" class="btn btn-danger btn-sm btn-icon-text me-3">
+                                    <i class="typcn typcn-edit btn-icon-prepend"></i> Lihat Detail
+                                    </a>
+                                    
+                                </form>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            @endforeach
 
-    </div>
 
 @endsection
 
 @section('script')
     <!-- Page level plugins -->
-    {{-- <script src="{{ asset('theme') }}/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('theme') }}/js/demo/chart-area-demo.js"></script>
-    <script src="{{ asset('theme') }}/js/demo/chart-pie-demo.js"></script> --}}
-
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="{js/demo/chart-pie-demo.js"></script>
 @endsection
 
 

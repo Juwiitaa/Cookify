@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    protected $table = 'kategori';
-    protected $fillable = ['name'];
+    protected $fillable = ['nama_kategori'];
 
-    public function reseps(){
-        return $this->belongsToMany(Resep::class);
+    public function disukaiUser(){
+        return $this->belongsToMany(User::class, 'kategori_user')->withTimestamps();
     }
+
 }

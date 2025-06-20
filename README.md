@@ -19,27 +19,26 @@
 
 ## Tentang Cookify
 
-Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, dan berbagi resep masakan dengan mudah. Platform ini mendukung pengguna dari berbagai latar belakang untuk menjelajahi ide masakan, mengikuti tren, hingga mengembangkan kreativitas memasak.
+Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, dan berbagi resep masakan dengan mudah. Platform ini mendukung pengguna dari berbagai latar belakang untuk menjelajahi ide masakan, hingga mengembangkan kreativitas memasak.
 
 ### Role dan fitur-fiturnya
 
 #### 1. Admin (Pengelola aplikasi)
 
-- Akses semua fitur Kontributor
-- Kelola pengguna dan kreator
-- Kelola kategori dan bahan resep
+- Akses semua fitur Kontributor dan user biasa
+- Kelola kategori
+- lihat dan hapus pengguna
 
 #### 2. Kontributor (Pembuat Resep)
 
 - Akses semua fitur User Biasa
 - Tambah, ubah, hapus resep
-- Upload foto/video tutorial
-- Lihat statistik interaksi resep
+- tambah kategori
 
 #### 3. User biasa (Pencari Resep)
 
 - Registrasi & login
-- Jelajah & filter resep
+- Jelajahi & filter resep
 - Simpan resep favorit
 
 <br>
@@ -47,7 +46,7 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 ### Tabel-tabel database beserta field dan tipe datanya
 <br>
 
-#### Tabel 1 (Pengguna)
+#### Tabel 1 (users)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
@@ -59,51 +58,47 @@ Cookify adalah aplikasi web yang membantu pengguna dalam menemukan, menyimpan, d
 | timestamps | datetime | created_at dan updated_at |
 <br>
 
-#### Tabel 2 (Kategori)
+#### Tabel 2 (kategoris)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | id | BIGINT | Primary key |
-| name | String | Nama kategori |
+| nama_kategori | String | Nama Kategori |
 | timestamps | datetime | created_at dan updated_at |
 <br>
 
-#### Tabel 3 (Resep)
+#### Tabel 3 (reseps)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | id | BIGINT | Primary key |
-| pengguna_id | String | FK dari tabel pengguna |
-| kategori_id | String | FK dari tabel kategori |
-| judul | String | Nama resep |
-| cooking_time | integer | Waktu memasak |
+| user_id | foreignId | FK dari tabel pengguna |
+| kategori_id | foreignId | FK dari tabel kategori |
+| judul | String | Daftar Bahan |
+| bahan | text | bahan resep |
 | description | text | Deskripsi resep |
-| steps | text | Langkah-langkah memasak |
+| steps | text | Deskripsi resep |
 | photo | String | Foto resep |
 | timestamps | datetime | created_at dan updated_at |
 <br>
 
-#### Tabel 4 (Bahan-bahan)
+#### Tabel 4 (favorite)
 
 | Nama Field | Tipe Data | Keterangan |
 |-------|-----------|------------|
 | id | BIGINT | Primary key |
-| name | String | Nama bahan |
-| timestamps | datetime | created_at dan updated_at |
-<br>
-
-#### Tabel 5 (Resep Bahan-bahan)
-
-| Nama Field | Tipe Data | Keterangan |
-|-------|-----------|------------|
-| id | BIGINT | Primary key |
-| resep_id | String | FK dari tabel resep |
-| bahan_id | String | FK dari tabel bahan |
+| user_id | foreignId | ID user yang menyukai resep |
+| resep_id | foreignId |  ID resep yang difavoritkan |
 | timestamps | datetime | created_at dan updated_at |
 <br>
 
 ### Jenis-jenis Relasi
 
-- Pengguna ke Resep (One-to-Many)  
-- Resep ke Kategori (Many-to-Many)  
-- Resep ke Bahan-bahan (Many-to-Many)
+- Pengguna ke Resep (One-to-Many)
+  satu pengguna (kontributor) dapat membuat banyak resep. 
+
+- Kategori ke Resep (One-to-Many)
+  satu kategori memiliki banyak resep.
+
+- Pengguna ke Resep (Many-to-Many)
+  Satu pengguna bisa menyukai banyak resep, dan satu resep bisa disukai oleh banyak pengguna.
