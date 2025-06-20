@@ -32,7 +32,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Resep::class, 'user_resep')->withTimestamps();
     }
 
-
     // public function isAdmin(){
     //     return $this->role === 'admin';
     // }

@@ -47,13 +47,13 @@
                 @enderror
             </div>
 
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="role" class="form-label">Pilih peran Anda:</label>
                 <select name="role" class="form-control">
                     <option value="user">User</option>
                     <option value="kontributor">Kontributor</option>
                 </select>
-            </div>
+            </div> --}}
 
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <a href="{{ route('login') }}" class="text-decoration-none">Sudah punya akun?</a>

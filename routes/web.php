@@ -48,3 +48,4 @@ Route::get('/detailResep/{id}', [ResepController::class, 'detailResep'])->middle
 
 Route::post('/hapusPengguna/{id}', [UserController::class, 'hapusPengguna'])->middleware('auth')->name('hapusPengguna');
 Route::get('/lihatPengguna', [UserController::class, 'lihatPengguna'])->middleware('auth')->name('lihatPengguna');
+

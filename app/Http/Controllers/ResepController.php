@@ -98,5 +98,5 @@ class ResepController extends Controller
         $resep = Resep::with(['kategori', 'user'])->findOrFail($id);
         return view('resep.detailResep', compact('resep'));
     }
-    
+
 }

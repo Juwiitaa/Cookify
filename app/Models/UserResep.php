@@ -8,5 +8,4 @@ class UserResep extends Model
 {
     protected $table = 'user_resep';
     protected $fillable = ['user_id', 'resep_id'];
-    
 }

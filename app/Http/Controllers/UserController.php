@@ -25,18 +25,17 @@ class UserController extends Controller
             'name' => 'required|min:3|max:50',
             'email' => 'required|email',
             'password' => 'required|min:6|confirmed',
-            'role' => 'required'
+            // 'role' => 'required'
         ]);
 
         User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
-            'role' => $request['role']
+            // 'role' => $request['role']
         ]);
 
         return redirect('/login');
-
     }
 
     public function login(Request $request){
